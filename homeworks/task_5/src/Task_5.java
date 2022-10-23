@@ -48,7 +48,7 @@ public class Task_5 implements Task_5_base {
     public HashMap<String, Double> subtask_7_HashMap(ArrayList<String> data) {
         // Дан список строк. Построить словарь, содержащий частоты слов
         // для данного списка в процентах
-        return null;
+		return null
     }
 
     @Override
