@@ -1,7 +1,10 @@
 package Game;
 
-public interface Cell {
+import Visual.Drawable;
+
+public interface Cell extends Drawable {
     void addToCell(GameObject object);
     void removeFromCell(GameObject object);
-    default void activationOnStep() { }
+    boolean isPassable();
+    default void activationOnStep(World world) { }
 }

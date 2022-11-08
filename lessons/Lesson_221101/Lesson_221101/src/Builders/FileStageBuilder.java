@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileStageBuilder implements StageBuilder {
-    private String dataPath;
+    private final String dataPath;
 
 
     public FileStageBuilder(String dataPath) {
@@ -25,7 +25,17 @@ public class FileStageBuilder implements StageBuilder {
             HashMap<String, String> info = readInfo(name);
             String fromStageName = info.getOrDefault("fromStage", null);
             String toStageName = info.getOrDefault("toStage", null);
-            return new Stage(name, fromStageName, toStageName, map);
+            Position positionIn = readPersonIn(name);
+            Position positionOut = readPersonOut(name);
+            return
+                new Stage(
+                    name,
+                    fromStageName,
+                    toStageName,
+                    positionIn,
+                    positionOut,
+                    map
+                );
         } catch (FileNotFoundException e) {
             System.out.println("Ошибка чтения уровня");
         }
@@ -45,6 +55,33 @@ public class FileStageBuilder implements StageBuilder {
             info.put(tokens[0].strip(), tokens[1].strip());
         }
         return info;
+    }
+
+    private Position readPersonIn(String stageName) throws FileNotFoundException {
+        return getSymbolPosition(stageName, '^');
+
+    }
+
+    private Position readPersonOut(String stageName) throws FileNotFoundException {
+        return getSymbolPosition(stageName, 'V');
+    }
+
+    private Position getSymbolPosition(String stageName, char symbol) throws FileNotFoundException {
+        InputStreamReader reader =
+                new InputStreamReader(
+                        new FileInputStream(String.format("%s/%s/map.txt", dataPath, stageName))
+                );
+        Scanner scanner = new Scanner(reader);
+        int y = 0;
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine();
+            for(int x = 0; x < line.length(); ++x) {
+                if(line.charAt(x) == symbol)
+                    return new Position(x, y);
+            }
+            ++y;
+        }
+        return null;
     }
 
     private List<List<Cell>> readMap(String stageName) throws FileNotFoundException {

@@ -1,5 +1,7 @@
 package Game;
 
+import Visual.VisualProcessor;
+
 import java.util.HashMap;
 
 public class FreeCell implements Cell {
@@ -16,5 +18,14 @@ public class FreeCell implements Cell {
     @Override
     public void removeFromCell(GameObject object) {
         objectsById.remove(object.getId());
+    }
+    @Override
+    public boolean isPassable() {
+        return true;
+    }
+
+    @Override
+    public void draw(VisualProcessor visualProcessor) {
+        visualProcessor.drawFreeCell();
     }
 }
