@@ -18,6 +18,7 @@ public class LanguageCollection {
     }
 
     public static void clear() {
-
+        size = 0;
+        contains = false;
     }
 }
