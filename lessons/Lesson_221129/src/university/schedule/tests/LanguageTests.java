@@ -32,6 +32,16 @@ public class LanguageTests extends Assert {
         LanguageCollection.add(language);
         assertTrue(LanguageCollection.contains(language));
     }
+    @Test
+    public void add_addOneFromTwo_containsOnlyAdded() {
+        Language lang1 = new Language("english");
+        Language lang2 = new Language("french");
+        assertFalse(LanguageCollection.contains(lang1));
+        assertFalse(LanguageCollection.contains(lang2));
+        LanguageCollection.add(lang1);
+        assertTrue(LanguageCollection.contains(lang1));
+        assertFalse(LanguageCollection.contains(lang2));
+    }
 
     @Test
     public void clear_addOneItemThenClear_sizeEqualsZero() {
