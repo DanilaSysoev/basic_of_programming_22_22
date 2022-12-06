@@ -1,24 +1,24 @@
 package university.schedule.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LanguageCollection {
-    private static int size = 0;
-    private static boolean contains = false;
+    private static final List<Language> languages = new ArrayList<>();
 
     public static int size() {
-        return size;
+        return languages.size();
     }
 
     public static void add(Language language) {
-        ++size;
-        contains = true;
+        languages.add(language);
     }
 
     public static boolean contains(Language language) {
-        return contains;
+        return languages.contains(language);
     }
 
     public static void clear() {
-        size = 0;
-        contains = false;
+        languages.clear();
     }
 }
