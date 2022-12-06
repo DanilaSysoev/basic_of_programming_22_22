@@ -11,7 +11,8 @@ public class LanguageCollection {
     }
 
     public static void add(Language language) {
-        languages.add(language);
+        if(!languages.contains(language))
+            languages.add(language);
     }
 
     public static boolean contains(Language language) {
