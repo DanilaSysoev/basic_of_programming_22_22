@@ -10,4 +10,12 @@ public class LanguageTests extends Assert {
         Language language = new Language("english");
         assertEquals("english", language.getName());
     }
+
+    @Test
+    public void equals_createTwoLanguagesWithSameNames_equalsTrue() {
+        Language lang1 = new Language("english");
+        Language lang2 = new Language("english");
+        assertTrue(lang1.equals(lang2));
+        assertTrue(lang2.equals(lang1));
+    }
 }
