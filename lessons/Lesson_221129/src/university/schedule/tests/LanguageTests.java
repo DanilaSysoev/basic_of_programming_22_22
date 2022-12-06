@@ -8,10 +8,10 @@ import university.schedule.core.LanguageCollection;
 public class LanguageTests extends Assert {
     // nameMethod_situation_expectedResult
     @Test
-    public void add_addIntoEmptyCollection_countEqualsOne() {
-        assertEquals(0, LanguageCollection.size());
+    public void add_addIntoCollection_sizeIncrease() {
+        int oldSize = LanguageCollection.size();
         LanguageCollection.add(new Language("english"));
-        assertEquals(1, LanguageCollection.size());
+        assertEquals(oldSize + 1, LanguageCollection.size());
     }
     @Test
     public void add_addIntoEmptyCollection_collectionContainsCorrectLanguage() {
@@ -19,5 +19,12 @@ public class LanguageTests extends Assert {
         assertFalse(LanguageCollection.contains(language));
         LanguageCollection.add(language);
         assertTrue(LanguageCollection.contains(language));
+    }
+
+    @Test
+    public void clear_addOneItemThenClear_sizeEqualsZero() {
+        LanguageCollection.add(new Language("english"));
+        LanguageCollection.clear();
+        assertEquals(0, LanguageCollection.size());
     }
 }
