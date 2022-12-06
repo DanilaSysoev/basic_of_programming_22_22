@@ -10,4 +10,8 @@ public class LanguageCollection {
     public static void add(Language language) {
         ++size;
     }
+
+    public static boolean contains(Language language) {
+        return false;
+    }
 }

@@ -13,4 +13,11 @@ public class LanguageTests extends Assert {
         LanguageCollection.add(new Language("english"));
         assertEquals(1, LanguageCollection.size());
     }
+    @Test
+    public void add_addIntoEmptyCollection_collectionContainsCorrectLanguage() {
+        Language language = new Language("english");
+        assertFalse(LanguageCollection.contains(language));
+        LanguageCollection.add(language);
+        assertTrue(LanguageCollection.contains(language));
+    }
 }
