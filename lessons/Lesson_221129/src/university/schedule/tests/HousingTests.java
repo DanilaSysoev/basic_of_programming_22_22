@@ -25,9 +25,23 @@ public class HousingTests extends Assert {
         assertTrue(housing2.equals(housing1));
     }
     @Test
-    public void equals_createTwoLanguagesWithDifferentNames_equalsFalse() {
+    public void equals_createTwoLanguagesWithDifferentBoth_equalsFalse() {
         Housing housing1 = new Housing("КГФ", "Проспект Вернадского 88");
         Housing housing2 = new Housing("Главный корпус", "Малая Пироговская 1");
+        assertFalse(housing1.equals(housing2));
+        assertFalse(housing2.equals(housing1));
+    }
+    @Test
+    public void equals_createTwoLanguagesWithDifferentNames_equalsFalse() {
+        Housing housing1 = new Housing("КГФ", "Проспект Вернадского 88");
+        Housing housing2 = new Housing("Главный корпус", "Проспект Вернадского 88");
+        assertFalse(housing1.equals(housing2));
+        assertFalse(housing2.equals(housing1));
+    }
+    @Test
+    public void equals_createTwoLanguagesWithDifferentAddress_equalsFalse() {
+        Housing housing1 = new Housing("КГФ", "Проспект Вернадского 88");
+        Housing housing2 = new Housing("КГФ", "Малая Пироговская 1");
         assertFalse(housing1.equals(housing2));
         assertFalse(housing2.equals(housing1));
     }
