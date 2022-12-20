@@ -9,10 +9,10 @@ public class Teacher extends NamedEntity {
     private final String discord;
 
     public Teacher(
-            String name,
-            String post,
-            String academicDegree,
-            String email
+        String name,
+        String post,
+        String academicDegree,
+        String email
     ) {
         super(name);
         this.post = post;

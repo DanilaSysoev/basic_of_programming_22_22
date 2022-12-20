@@ -26,4 +26,8 @@ public class EntityCollection<T> {
     public boolean contains(T entity) {
         return entities.contains(entity);
     }
+
+    public List<T> getAll() {
+        return new ArrayList<>(entities);
+    }
 }
